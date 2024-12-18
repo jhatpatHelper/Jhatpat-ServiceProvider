@@ -28,7 +28,7 @@ jobs:
 
       # Uncomment to verify that all files are formatted correctly
       - name: Verify formatting
-        run: flutter format --output=none --set-exit-if-changed .
+        run: dart format --output=none --set-exit-if-changed .
 
       # Analyze the project source code
       - name: Analyze project source
