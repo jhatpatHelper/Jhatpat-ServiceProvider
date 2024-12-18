@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "964436277640",
+    "project_id": "jhatpat-backend",
+    "storage_bucket": "jhatpat-backend.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:964436277640:android:9ca1040d49f69c0ad9a23d",
+        "android_client_info": {
+          "package_name": "com.Jhatpat.jhatpatuser"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDjTb_T-OFglgCr7vbJHjhtB5lR_r2Vrf8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:964436277640:android:90ff3d6f22643af8d9a23d",
+        "android_client_info": {
+          "package_name": "com.JhatpatServiceProvider.jhatpat_serviceprovider"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDjTb_T-OFglgCr7vbJHjhtB5lR_r2Vrf8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

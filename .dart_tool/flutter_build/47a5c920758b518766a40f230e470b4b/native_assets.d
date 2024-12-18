@@ -1,0 +1,1 @@
+ /home/anshul/jhatpat/EmployeeApplication/Jhatpat-ServiceProvider/.dart_tool/flutter_build/47a5c920758b518766a40f230e470b4b/native_assets.yaml: 
