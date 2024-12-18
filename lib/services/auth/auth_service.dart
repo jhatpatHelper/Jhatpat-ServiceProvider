@@ -34,7 +34,7 @@ class AuthService {
   Future<bool> isPhoneNumberExists(String phoneNumber) async {
     try {
       var snapshot = await _firestore
-          .collection('users')
+          .collection('service-providers')
           .where('phone', isEqualTo: phoneNumber)
           .get();
       return snapshot.docs.isNotEmpty;
@@ -47,7 +47,7 @@ class AuthService {
   // Add new user to Firestore
   Future<void> addUserToFirestore(String phoneNumber) async {
     try {
-      await _firestore.collection('users').add({
+      await _firestore.collection('service-providers').add({
         'phone': phoneNumber,
         'createdAt': Timestamp.now(),
       });
@@ -60,7 +60,7 @@ class AuthService {
   // Get user data by phone number
   Future<QueryDocumentSnapshot<Map<String, dynamic>>?> getUserByPhoneNumber(String phoneNumber) async {
     var userSnapshot = await _firestore
-        .collection('users')
+        .collection('service-providers')
         .where('phone', isEqualTo: phoneNumber)
         .limit(1)
         .get();
