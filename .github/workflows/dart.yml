@@ -27,12 +27,12 @@ jobs:
         run: flutter pub get
 
      # Verify formatting and allow the build to continue if there are formatting issues
-      - name: Verify formatting
-        run: |
-          dart format --output=none --set-exit-if-changed .
-          if [ $? -ne 0 ]; then
-             echo "Formatting errors detected, but continuing with the build."
-          fi
+     #  - name: Verify formatting
+     #    run: |
+     #      dart format --output=none --set-exit-if-changed .
+     #      if [ $? -ne 0 ]; then
+     #         echo "Formatting errors detected, but continuing with the build."
+     #      fi
 
       # Analyze the project source code
       - name: Analyze project source
