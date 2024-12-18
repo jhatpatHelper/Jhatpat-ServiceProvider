@@ -1,9 +1,12 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'login.dart'; // Import LoginPage
 import 'edit_profile.dart'; // Import EditProfilePage
 import 'home.dart'; // Import HomePage
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized(); // Ensure bindings are initialized
+  await Firebase.initializeApp(); // Initialize Firebase before running the app
   runApp(const MyApp());
 }
 
