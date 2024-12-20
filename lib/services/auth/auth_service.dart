@@ -5,8 +5,19 @@ class AuthService {
   final FirebaseAuth _auth = FirebaseAuth.instance;
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
 
+  // Check if the user is logged in
+  bool isLoggedIn() {
+    return _auth.currentUser != null;
+  }
+
+  // Get current user UID
+  String getCurrentUserUid() {
+    return _auth.currentUser?.uid ?? '';
+  }
+
   // Function to send OTP
-  Future<void> sendOtp(String phoneNumber, Function(String) onOtpSent, Function(String) onVerificationFailed) async {
+  Future<void> sendOtp(String phoneNumber, Function(String) onOtpSent,
+      Function(String) onVerificationFailed) async {
     await _auth.verifyPhoneNumber(
       phoneNumber: phoneNumber,
       verificationCompleted: (PhoneAuthCredential credential) {},
@@ -44,21 +55,31 @@ class AuthService {
     }
   }
 
-  // Add new user to Firestore
   Future<void> addUserToFirestore(String phoneNumber) async {
     try {
-      await _firestore.collection('service-providers').add({
-        'phone': phoneNumber,
-        'createdAt': Timestamp.now(),
-      });
-      print("User added to Firestore");
+      // Get the current user's Firebase Auth UID
+      String? userId = FirebaseAuth.instance.currentUser?.uid;
+
+      if (userId != null) {
+        // Set the Firestore document with the UID as the document ID
+        await _firestore.collection('service-providers').doc(userId).set({
+          'phone': phoneNumber,
+          'createdAt': Timestamp.now(),
+        });
+
+        print("User added to Firestore with UID as docId");
+      } else {
+        print("No user is logged in.");
+      }
     } catch (e) {
       print("Error adding user to Firestore: $e");
     }
   }
 
+
   // Get user data by phone number
-  Future<QueryDocumentSnapshot<Map<String, dynamic>>?> getUserByPhoneNumber(String phoneNumber) async {
+  Future<QueryDocumentSnapshot<Map<String, dynamic>>?> getUserByPhoneNumber(
+      String phoneNumber) async {
     var userSnapshot = await _firestore
         .collection('service-providers')
         .where('phone', isEqualTo: phoneNumber)
@@ -66,6 +87,6 @@ class AuthService {
         .get();
     return userSnapshot.docs.isNotEmpty ? userSnapshot.docs.first : null;
   }
+
+
 }
-
-

@@ -1,5 +1,6 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:jhatpat_serviceprovider/services/auth/auth_gate.dart';
 import 'login.dart'; // Import LoginPage
 import 'edit_profile.dart'; // Import EditProfilePage
 import 'home.dart'; // Import HomePage
@@ -20,9 +21,9 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      initialRoute: '/',
+      home: const AuthGate(), // Use AuthGate as the entry point
       routes: {
-        '/': (context) => const LoginPage(), // Start with LoginPage
+        '/login': (context) => const LoginPage(), // Start with LoginPage
         '/edit_profile': (context) => const EditProfilePage(),
         '/home': (context) => const HomePage(),
       },
