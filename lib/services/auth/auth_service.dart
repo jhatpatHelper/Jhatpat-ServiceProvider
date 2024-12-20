@@ -55,18 +55,6 @@ class AuthService {
     }
   }
 
-  // Add new user to Firestore
-  // Future<void> addUserToFirestore(String phoneNumber) async {
-  //   try {
-  //     await _firestore.collection('service-providers').add({
-  //       'phone': phoneNumber,
-  //       'createdAt': Timestamp.now(),
-  //     });
-  //     print("User added to Firestore");
-  //   } catch (e) {
-  //     print("Error adding user to Firestore: $e");
-  //   }
-  // }
   Future<void> addUserToFirestore(String phoneNumber) async {
     try {
       // Get the current user's Firebase Auth UID
