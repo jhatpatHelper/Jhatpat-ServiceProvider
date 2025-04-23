@@ -1,0 +1,43 @@
+name: Flutter
+
+on:
+  push:
+    branches:
+      - "main"
+  pull_request:
+    branches:
+      - "main"
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # Set up Flutter SDK
+      - name: Set up Flutter SDK
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.27.1'  # You can specify a particular version of Flutter if needed
+
+      # Install dependencies using 'flutter pub get'
+      - name: Install dependencies
+        run: flutter pub get
+
+     # Verify formatting and allow the build to continue if there are formatting issues
+     #  - name: Verify formatting
+     #    run: |
+     #      dart format --output=none --set-exit-if-changed .
+     #      if [ $? -ne 0 ]; then
+     #         echo "Formatting errors detected, but continuing with the build."
+     #      fi
+
+      # Analyze the project source code
+      - name: Analyze project source
+        run: flutter analyze
+
+      # Run Flutter tests
+      - name: Run tests
+        run: flutter test
